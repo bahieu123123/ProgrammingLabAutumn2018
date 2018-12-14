@@ -6,8 +6,8 @@ import java.nio.*;
 
 public class BloomFilter
 {
-    private byte[] set;
-    private int keySize, setSize, size;
+    public byte[] set;
+    public int keySize, setSize, size;
     private MessageDigest md;
 
     /* Constructor */
@@ -51,7 +51,7 @@ public class BloomFilter
         return size;
     }
     /* Function to get hash - MD5 */
-    private int getHash(int i)
+    public int getHash(int i)
     {
         md.reset();
         byte[] bytes = ByteBuffer.allocate(4).putInt(i).array();
@@ -78,7 +78,7 @@ public class BloomFilter
         return true;
     }
     /* Function to get set array for an object */
-    private int[] getSetArray(Object obj)
+    public int[] getSetArray(Object obj)
     {
         int[] tmpset = new int[keySize];
         tmpset[0] = getHash(obj.hashCode());
