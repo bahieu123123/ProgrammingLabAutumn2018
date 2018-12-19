@@ -89,10 +89,10 @@ public class BloomFilterGraphic extends JPanel {
         addPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel label1 = new JLabel("Element");
         JTextField addField = new JTextField(9);
-        JButton addButton = new JButton("Confirm");
+        JButton addButton = new JButton("Add");
         JButton checkButton = new JButton("Check");
         addButton.addActionListener(e -> {
-            bloomFilter2.add(Integer.parseInt(addField.getText()));
+            bloomFilter2.addElement(Integer.parseInt(addField.getText()));
             frame.repaint();
         });
         checkButton.addActionListener(e -> {
