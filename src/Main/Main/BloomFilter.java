@@ -92,11 +92,8 @@ public class BloomFilter implements Set {
     }
 
     /* Function to get hash - MD5 */
-    public int getHash(int i) {
-        md.reset();
-        byte[] bytes = ByteBuffer.allocate(4).putInt(i).array();
-        md.update(bytes, 0, bytes.length);
-        return Math.abs(new BigInteger(1, md.digest()).intValue()) % (set.length - 1);
+    int getHash(int i) {
+        return Math.abs(Integer.hashCode(i)) % (set.length - 1);
     }
 
     /* Function to add an object */
