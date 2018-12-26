@@ -1,15 +1,11 @@
 package Main;
 
-import java.security.*;
-import java.math.*;
-import java.nio.*;
 import java.util.*;
 
 public class BloomFilter implements Set {
     byte[] set;
     private int keySize, setSize, size;
     List listElm = new ArrayList();
-    private MessageDigest md;
 
 
     /* Constructor */
@@ -18,22 +14,13 @@ public class BloomFilter implements Set {
         set = new byte[setSize];
         keySize = k;
         size = 0;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalArgumentException("Error : MD5 Hash not found");
-        }
+
     }
 
     /* Function to clear bloom set */
     public void makeEmpty() {
         set = new byte[setSize];
         size = 0;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalArgumentException("Error : MD5 Hash not found");
-        }
     }
 
     @Override
@@ -91,7 +78,7 @@ public class BloomFilter implements Set {
         return size;
     }
 
-    /* Function to get hash - MD5 */
+    /* Function to get hash */
     int getHash(int i) {
         return Math.abs(Integer.hashCode(i)) % (set.length - 1);
     }
